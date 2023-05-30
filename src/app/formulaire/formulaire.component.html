@@ -1,0 +1,19 @@
+<h2>Ajoute une musique</h2>
+
+<div>
+  <label for="mode">Mode d'ajout :</label>
+  <select id="mode" [(ngModel)]="selectValue">
+    <option value="url">URL</option>
+    <option value="fichierLocal">Fichier local</option>
+  </select>
+</div>
+
+<div *ngIf="selectValue === 'url'">
+  <label>Joindre le lien de ton fichier</label><input type="text" />
+</div>
+
+<div *ngIf="selectValue !== 'url'">
+  <label>Charge ton fichier </label><input type="file" />
+</div>
+
+<button (click)="onSubmit()">Ajouter</button>
