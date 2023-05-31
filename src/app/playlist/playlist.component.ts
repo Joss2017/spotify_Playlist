@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Track } from '../track';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-playlist',
@@ -8,18 +7,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./playlist.component.scss'],
 })
 export class PlaylistComponent implements OnInit {
-  playlistForm!: FormGroup;
+  playlistForm!: string[];
 
-  constructor(private formBuilder: FormBuilder) {}
-
-  ngOnInit(): void {
-    this.playlistForm = this.formBuilder.group({
-      title: [null],
-      author: [null],
-      time: [null],
-    });
-  }
+  ngOnInit(): void {}
   onSubmitForm() {
     console.log(this.playlistForm);
   }
+
+  
 }
