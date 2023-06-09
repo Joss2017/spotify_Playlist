@@ -1,4 +1,5 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Track } from '../Track';
 
 @Component({
   selector: 'app-formulaire',
@@ -10,18 +11,32 @@ export class FormulaireComponent implements OnInit {
   url: string = '';
   fichierLocal: File | null = null;
 
+  @Output() newTrack = new EventEmitter<Track>();
+
   ngOnInit(): void {}
 
   onSelected(event: any): void {
-    this.fichierLocal = event.target;
+    if (event.target.value === 'url') {
+      this.selectValue = 'url';
+    } else if (event.target.value === 'fichier local') {
+      this.selectValue === 'fichier local';
+    }
   }
 
- 
-  onSubmit() {
-    if (this.selectValue === 'url') {
-      console.log('Ajout URL: ', this.url);
-    } else if (this.selectValue === 'fichierLocal') {
-      console.log('Ajout fichierLocal: ', this.fichierLocal);
-    }
+  onSubmitUrl(fileUrl: string) {
+    // La valeur est transmise depuis le formulaire via le paramètre de la méthode
+    console.log('file URL', fileUrl);
+
+    // Construire un objet de la classe Track qui représente le fichier à cette URL
+    let trackUrl: Track = new Track();
+    trackUrl.url = fileUrl;
+
+    // Émettre cet objet track dans l'Output à destination du parent
+    this.newTrack.emit(trackUrl);
+  }
+
+  onSubmitFile(/* TODO : il va falloir prendre le fichier en paramètre ici */) {
+    // TODO : faire comme pour onSumbitUrl()
+    // (mais la facon de construire l'objet Track sera probablement un peu différente)
   }
 }

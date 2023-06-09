@@ -9,11 +9,12 @@
 </div>
 
 <div *ngIf="selectValue === 'url'">
-  <label>Joindre le lien de ton fichier</label><input type="text" />
+  <label>Joindre le lien de ton fichier</label><input type="text" #fileUrl />
+  <button (click)="onSubmitUrl(fileUrl.value)">Ajouter</button>
 </div>
 
-<div *ngIf="selectValue !== 'url'">
-  <label>Charge ton fichier </label><input type="file" />
+<div *ngIf="selectValue === 'fichierLocal'">
+  <label>Charge ton fichier</label
+  ><input type="file" (change)="onSelected($event)" />
+  <button (click)="onSubmitFile()">Ajouter</button>
 </div>
-
-<button  (click)="onSubmit()">Ajouter</button>

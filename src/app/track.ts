@@ -1,5 +1,6 @@
 export class Track {
-  title: string | undefined;
-  author: string | undefined;
-  time: string | undefined;
+  title!: string;
+  author!: string;
+  time!: string;
+  url!: string;
 }

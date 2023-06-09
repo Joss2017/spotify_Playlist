@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Track } from '../track';
+import { Track } from '../Track';
 
 @Component({
   selector: 'app-playlist',
@@ -7,9 +7,11 @@ import { Track } from '../track';
   styleUrls: ['./playlist.component.scss'],
 })
 export class PlaylistComponent implements OnInit {
-  playlistForm!: string[];
+  playlistForm!: Track[];
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+  
+  
   onSubmitForm() {
     console.log(this.playlistForm);
   }
